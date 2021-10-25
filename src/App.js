@@ -96,7 +96,7 @@ class App extends Component {
 
     return (
       <div>
-        {/* To Search Coins (goto) */}
+        {/* To Search Coins */}
         <input
           type="text"
           placeholder="Search"
@@ -104,15 +104,16 @@ class App extends Component {
         ></input>
 
         {/* Coins being rendered */}
-        <div>
-          
-          <div>
-            <p>Coin</p>
-            <p>Price</p>
-            <p>24h Max.</p>
-            <p>24h Min.</p>
-            <p>Price Chg. 24h</p>
-            <p>Mkt. Cap</p>
+        <div className="coin-container">
+          <div className="coin">
+            <div className="c-category">Coin</div>
+            <div className="categories">
+              <p>Price</p>
+              <p>24h Max.</p>
+              <p>24h Min.</p>
+              <p>Price Chg.</p>
+              <p>Mkt. Cap</p>
+            </div>
           </div>
 
           {coin_arr}
