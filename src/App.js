@@ -77,9 +77,7 @@ class App extends Component {
       coin_arr = arr.map((val, inx) => {
         return <Coins coin_prop={val} key={inx} />;
       });
-    } 
-    
-    else {
+    } else {
       let cnt = 0;
       coin_arr = this.state.coins_data.map((val, inx) => {
         // Matching the entered value with coins
@@ -87,27 +85,38 @@ class App extends Component {
           cnt++;
           return <Coins coin_prop={val} key={inx} />;
         }
+        return <></>;
       });
 
-      pagination_disable = true;  // disabling the next, prev and goto
-      total_coins = cnt;  // total search results
+      pagination_disable = true; // disabling the next, prev and goto
+      total_coins = cnt; // total search results
     }
 
-    // console.log(coin_search.length);
+    console.log(this.state.coins_data);
 
     return (
       <div>
         {/* To Search Coins (goto) */}
-        <form>
-          <input
-            type="text"
-            placeholder="Search"
-            onChange={this.searchCoin}
-          ></input>
-        </form>
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={this.searchCoin}
+        ></input>
 
         {/* Coins being rendered */}
-        {coin_arr}
+        <div>
+          
+          <div>
+            <p>Coin</p>
+            <p>Price</p>
+            <p>24h Max.</p>
+            <p>24h Min.</p>
+            <p>Price Chg. 24h</p>
+            <p>Mkt. Cap</p>
+          </div>
+
+          {coin_arr}
+        </div>
 
         {/* Going to different pages */}
         <Pagination
