@@ -13,12 +13,15 @@ class App extends Component {
       total_pages: 0,
       coins_per_page: 15,
       coin_search: "",
+      is_sorted_alpha: 1,
+      is_sorted_price: 0,
     };
 
     // The functions that are changing states
     this.setCurrentPage = this.setCurrentPage.bind(this);
     this.searchCoin = this.searchCoin.bind(this);
     this.gotoPage = this.gotoPage.bind(this);
+    this.sortAccTo = this.sortAccTo.bind(this);
   }
 
   // Fetching the data from the api
@@ -56,6 +59,39 @@ class App extends Component {
 
   searchCoin(event) {
     this.setState({ coin_search: event.target.value });
+  }
+
+  sortAccTo(val){
+    let arr = this.state.coins_data;
+    let alpha = this.state.is_sorted_alpha;
+    let price = this.state.is_sorted_price;
+    if(val === "alpha"){
+      if(alpha){
+        arr.sort((a,b)=>{
+          return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        })
+      }
+      else{
+        arr.sort((b,a)=>{
+          return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        })
+      }
+      this.setState({coins_data: arr, is_sorted_alpha: alpha^1, current_page: 1});
+    }
+
+    else{
+      if(price){
+        arr.sort((a,b)=>{
+          return a.current_price-b.current_price;
+        })
+      }
+      else{
+        arr.sort((b,a)=>{
+          return a.current_price-b.current_price;
+        })
+      }
+      this.setState({coins_data: arr, is_sorted_price: price^1, current_page: 1});
+    }
   }
 
   render() {
@@ -107,9 +143,9 @@ class App extends Component {
         <div className="coin-container">
 
           <div className="coin" style={{border: "0px", borderBottom:"2px solid rgb(231, 228, 228)", fontWeight: "bold"}}>
-            <div className="c-category">Coin</div>
+            <div className="c-category" onClick={()=>this.sortAccTo("alpha")}>Coin</div>
             <div className="categories">
-              <p>Price</p>
+              <p onClick={()=>this.sortAccTo("price")}>Price</p>
               <p>24h Max.</p>
               <p>24h Min.</p>
               <p>Price Chg.</p>
