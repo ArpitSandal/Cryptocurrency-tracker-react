@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./font-awesome/css/all.css";
 import Coins from "./components/Coins";
 import Pagination from "./components/Pagination";
+import Navbar from "./components/Navbar";
 
 class App extends Component {
   constructor() {
@@ -57,10 +59,13 @@ class App extends Component {
     this.setState({ current_page: page_no });
   }
 
+  // Searching the coin in search bar
   searchCoin(event) {
     this.setState({ coin_search: event.target.value });
+    console.log("jai mata di");
   }
 
+  // Sorting the coins acc. to alphabetical order or price 
   sortAccTo(val){
     let arr = this.state.coins_data;
     let alpha = this.state.is_sorted_alpha;
@@ -128,22 +133,23 @@ class App extends Component {
       total_coins = cnt; // total search results
     }
 
-    console.log(this.state.coins_data);
+    // console.log(this.state.coins_data);
 
     return (
       <div>
         {/* To Search Coins */}
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={this.searchCoin}
-        ></input>
+        <Navbar searchCoin={this.searchCoin} key="appy"/>
+        
 
         {/* Coins being rendered */}
         <div className="coin-container">
 
           <div className="coin" style={{border: "0px", borderBottom:"2px solid rgb(231, 228, 228)", fontWeight: "bold"}}>
-            <div className="c-category" onClick={()=>this.sortAccTo("alpha")}>Coin</div>
+
+            <div className="c-category" >
+              <span onClick={()=>this.sortAccTo("alpha")}>Coin</span>
+            </div>
+
             <div className="categories">
               <p onClick={()=>this.sortAccTo("price")}>Price</p>
               <p>24h Max.</p>
@@ -151,6 +157,7 @@ class App extends Component {
               <p>Price Chg.</p>
               <p>Mkt. Cap</p>
             </div>
+
           </div>
 
           {coin_arr}
@@ -165,6 +172,7 @@ class App extends Component {
           pagination_disable={pagination_disable}
           total_coins={total_coins}
         />
+
       </div>
     );
   }

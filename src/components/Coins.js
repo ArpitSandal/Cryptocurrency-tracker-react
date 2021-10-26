@@ -7,16 +7,22 @@ function Coins(props) {
   let price_change_color = "#38b000";
 
   if (price_change < 0) price_change_color = "red";
-  
+
   return (
 
     <div className="coin">
+
       <div className="img-name-symbol">
-        <span>
-          <img src={coin_prop.image} alt={coin_prop.id} />
-          <span className="coin-name">{coin_prop.name}</span>
+
+        <span className="img-name">
+
+          <div><img src={coin_prop.image} alt={coin_prop.id} /></div>
+          <div className="coin-name">{coin_prop.name}</div>
+
         </span>
+        
         <span className="coin-symbol">{coin_prop.symbol}</span>
+
       </div>
 
       <div className="categories">

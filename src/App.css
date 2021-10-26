@@ -17,6 +17,19 @@ li{
     user-select: none;
 }
 
+/* ---------- navbar ------------ */
+nav{
+    /* border: 2px solid red; */
+    background-color: rgb(56, 97, 251);
+    color: white;
+    font-weight: 500;
+    position:sticky;
+}
+
+nav a{
+    margin-left: 1.6em;
+}
+
 /* ----------- coin-container, coin --------- */
 
 .coin-container{
@@ -41,6 +54,8 @@ li{
 .coin-symbol{
     text-transform: uppercase;
     font-size: 0.75rem;
+    /* border: 2px solid green; */
+    margin: 0 1em;
 }
 
 /* --------- for price, 24max, 24h min etc. ----------- */
@@ -49,7 +64,7 @@ li{
     display: flex;
     justify-content: space-between;
     /* border: 2px solid red; */
-    width: 63%;
+    width: 66%;
 }
 
 .categories p{
@@ -61,17 +76,26 @@ li{
     justify-content: space-between;
     align-items: center;
     /* border: 2px solid green; */
-    width: 25%;
+    width: 23%;
 }
+
+.img-name{
+    /* border: 2px solid red; */
+    display: flex;
+}
+
 
 .c-category{
     display: flex;
     justify-content: center;
+    /* border: 2px solid red; */
 }
 
 
 
+
 /* --------- coin img -------- */
+
 img{
     width: 20px;
     height: 20px;
