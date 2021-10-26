@@ -105,7 +105,8 @@ class App extends Component {
 
         {/* Coins being rendered */}
         <div className="coin-container">
-          <div className="coin">
+
+          <div className="coin" style={{border: "0px", borderBottom:"2px solid rgb(231, 228, 228)", fontWeight: "bold"}}>
             <div className="c-category">Coin</div>
             <div className="categories">
               <p>Price</p>
