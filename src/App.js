@@ -65,37 +65,41 @@ class App extends Component {
     console.log("jai mata di");
   }
 
-  // Sorting the coins acc. to alphabetical order or price 
-  sortAccTo(val){
+  // Sorting the coins acc. to alphabetical order or price
+  sortAccTo(val) {
     let arr = this.state.coins_data;
     let alpha = this.state.is_sorted_alpha;
     let price = this.state.is_sorted_price;
-    if(val === "alpha"){
-      if(alpha){
-        arr.sort((a,b)=>{
-          return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-        })
+    if (val === "alpha") {
+      if (alpha) {
+        arr.sort((a, b) => {
+          return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        });
+      } else {
+        arr.sort((b, a) => {
+          return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        });
       }
-      else{
-        arr.sort((b,a)=>{
-          return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-        })
+      this.setState({
+        coins_data: arr,
+        is_sorted_alpha: alpha ^ 1,
+        current_page: 1,
+      });
+    } else {
+      if (price) {
+        arr.sort((a, b) => {
+          return a.current_price - b.current_price;
+        });
+      } else {
+        arr.sort((b, a) => {
+          return a.current_price - b.current_price;
+        });
       }
-      this.setState({coins_data: arr, is_sorted_alpha: alpha^1, current_page: 1});
-    }
-
-    else{
-      if(price){
-        arr.sort((a,b)=>{
-          return a.current_price-b.current_price;
-        })
-      }
-      else{
-        arr.sort((b,a)=>{
-          return a.current_price-b.current_price;
-        })
-      }
-      this.setState({coins_data: arr, is_sorted_price: price^1, current_page: 1});
+      this.setState({
+        coins_data: arr,
+        is_sorted_price: price ^ 1,
+        current_page: 1,
+      });
     }
   }
 
@@ -138,29 +142,46 @@ class App extends Component {
     return (
       <div>
         {/* To Search Coins */}
-        <Navbar searchCoin={this.searchCoin} key="appy"/>
-        
+        <Navbar searchCoin={this.searchCoin} key="appy" />
 
         {/* Coins being rendered */}
         <div className="coin-container">
+          <div className="inner-coin-container">
+            <div
+              className="coin"
+              style={{
+                border: "0px",
+                borderBottom: "2px solid rgb(231, 228, 228)",
+                fontWeight: "bold",
+              }}
+            >
+              <div className="c-category">
+                <span
+                  className="sort-button"
+                  onClick={() => this.sortAccTo("alpha")}
+                >
+                  <span>Coin</span> <i class="fas fa-sort"></i>
+                </span>
+              </div>
 
-          <div className="coin" style={{border: "0px", borderBottom:"2px solid rgb(231, 228, 228)", fontWeight: "bold"}}>
-
-            <div className="c-category" >
-              <span onClick={()=>this.sortAccTo("alpha")}>Coin</span>
+              <div className="categories">
+                <p>
+                  <span
+                    className="sort-button"
+                    onClick={() => this.sortAccTo("price")}
+                  >
+                    <span>Price</span> <i class="fas fa-sort"></i>
+                  </span>
+                </p>
+                <p>24h Max.</p>
+                <p>24h Min.</p>
+                <p>Price Chg.</p>
+                <p>Mkt. Cap</p>
+              </div>
             </div>
 
-            <div className="categories">
-              <p onClick={()=>this.sortAccTo("price")}>Price</p>
-              <p>24h Max.</p>
-              <p>24h Min.</p>
-              <p>Price Chg.</p>
-              <p>Mkt. Cap</p>
-            </div>
-
+            {coin_arr}
           </div>
-
-          {coin_arr}
         </div>
 
         {/* Going to different pages */}
@@ -172,7 +193,6 @@ class App extends Component {
           pagination_disable={pagination_disable}
           total_coins={total_coins}
         />
-
       </div>
     );
   }

@@ -1,105 +1,197 @@
-html,body{
-    margin: 0;
-    padding: 0;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
 }
 
-p{
-    margin: 0;
-    padding: 0;
+p {
+  margin: 0;
+  padding: 0;
 }
 
-li{
-    user-select: none;
+a {
+  color: white;
 }
 
-/* ---------- navbar ------------ */
-nav{
-    /* border: 2px solid red; */
-    background-color: rgb(56, 97, 251);
-    color: white;
+a:hover {
+  color: whitesmoke;
+}
+
+li {
+  user-select: none;
+}
+
+input[type="search"] {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+input[type="search"]:focus{
     font-weight: 500;
-    position:sticky;
+}
+/* ---------- navbar ------------ */
+
+nav {
+  /* border: 2px solid red; */
+  background-color: rgb(56, 97, 251);
+  color: white;
+  font-weight: 500;
 }
 
-nav a{
-    margin-left: 1.6em;
+nav a {
+  margin-left: 2em;
+  font-size: 1.3rem;
+}
+
+nav a span i {
+  animation-name: animate-coin;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+}
+
+@keyframes animate-coin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(359deg);
+  }
 }
 
 /* ----------- coin-container, coin --------- */
 
-.coin-container{
-    padding: 2em;
-    font-size: 0.9rem;
-    margin: 1em;
+.coin-container {
+  padding: 2em;
+  font-size: 0.9rem;
+  margin: 1em;
 }
 
-.coin{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 0em;
-    border-top: 1px solid rgb(231, 228, 228);
+.coin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0em;
+  border-top: 1px solid rgb(231, 228, 228);
 }
 
-.coin-name{
-    font-weight: bold;
-    /* border: 2px solid red; */
+.coin-name {
+  font-weight: bold;
+  /* border: 2px solid red; */
 }
 
-.coin-symbol{
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    /* border: 2px solid green; */
-    margin: 0 1em;
+.coin-symbol {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  /* border: 2px solid green; */
+  margin: 0 1em;
 }
 
 /* --------- for price, 24max, 24h min etc. ----------- */
 
-.categories{
-    display: flex;
-    justify-content: space-between;
-    /* border: 2px solid red; */
-    width: 66%;
+.categories {
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid red; */
+  width: 66%;
 }
 
-.categories p{
-    width: 15%;
+.categories p {
+  width: 15%;
+  /* border: 2px solid red; */
 }
 
-.img-name-symbol, .c-category{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* border: 2px solid green; */
-    width: 23%;
+.img-name-symbol,
+.c-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid green; */
+  width: 23%;
 }
 
-.img-name{
-    /* border: 2px solid red; */
-    display: flex;
+.img-name {
+  /* border: 2px solid red; */
+  display: flex;
 }
 
-
-.c-category{
-    display: flex;
-    justify-content: center;
-    /* border: 2px solid red; */
+.c-category {
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid red; */
 }
-
-
-
 
 /* --------- coin img -------- */
 
-img{
-    width: 20px;
-    height: 20px;
-    margin: 0 1.2em;
-    margin-bottom: 2.5px;
+img {
+  width: 20px;
+  height: 20px;
+  margin: 0 1.2em;
+  margin-bottom: 2.5px;
+  /* border: 2px solid red; */
+}
+
+/* ------------ hover area ----------------- */
+
+/* ---------- sort-button on price and coin ------------- */
+
+.sort-button {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-button i {
+  color: rgb(192, 188, 188);
+}
+
+.sort-button span:hover ~ i {
+  color: rgb(56, 97, 251);
+}
+
+.sort-button i:hover {
+  color: rgb(56, 97, 251);
+}
+
+/* ---------------- media queries ------------- */
+
+@media (max-width: 1200px) {
+  .coin-container {
+    overflow-x: scroll;
+    margin: 2em 3em;
+    padding: 1em 0;
+    scrollbar-width: none;
+  }
+  .coin-container::-webkit-scrollbar {
+    display: none;
+  }
+  .inner-coin-container {
+    min-width: 1200px;
     /* border: 2px solid red; */
+  }
+}
+
+@media (max-width: 768px) {
+  input[type="search"] {
+    margin: 0;
+    width: 100px;
+  }
+
+  .coin-container {
+    margin: 1em 2em;
+  }
+
+  /* crypto-con */
+  nav a span {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    margin-left: 1em;
+  }
+  
 }
