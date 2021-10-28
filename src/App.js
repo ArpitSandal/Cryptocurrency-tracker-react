@@ -63,7 +63,7 @@ class App extends Component {
   // Searching the coin in search bar
   searchCoin(event) {
     this.setState({ coin_search: event.target.value });
-    console.log("jai mata di");
+    // console.log("jai mata di");
   }
 
   // Sorting the coins acc. to alphabetical order or price
@@ -121,7 +121,7 @@ class App extends Component {
         last_coin
       );
       coin_arr = arr.map((val, inx) => {
-        return <Coins coin_prop={val} key={inx} />;
+        return <Coins coin_prop={val} key={inx + 1} />;
       });
     } else {
       let cnt = 0;
@@ -131,7 +131,7 @@ class App extends Component {
           cnt++;
           return <Coins coin_prop={val} key={inx} />;
         }
-        return <></>;
+        return null;
       });
 
       pagination_disable = true; // disabling the next, prev and goto
