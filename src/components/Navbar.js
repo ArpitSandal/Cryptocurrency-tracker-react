@@ -3,7 +3,7 @@ import React from "react";
 function Navbar(props) {
   return (
     <nav className="navbar justify-content-between" style={{ padding: "0.9em 1.1em" }}>
-      <a className="navbar-brand" href="../../public/index.html">
+      <a className="navbar-brand" href="https://arpitsandal.github.io/Cryptocurrency-tracker-react/">
         <span style={{letterSpacing: "2px"}}>CRYPT<i className="fab fa-bitcoin"></i>-Con</span>
       </a>
       <form className="form-inline">
