@@ -31,8 +31,8 @@ input[type="search"] {
   margin-right: 1em;
 }
 
-input[type="search"]:focus{
-    font-weight: 500;
+input[type="search"]:focus {
+  font-weight: 500;
 }
 /* ---------- navbar ------------ */
 
@@ -136,8 +136,6 @@ img {
   /* border: 2px solid red; */
 }
 
-/* ------------ hover area ----------------- */
-
 /* ---------- sort-button on price and coin ------------- */
 
 .sort-button {
@@ -148,6 +146,43 @@ img {
 .sort-button i {
   color: rgb(192, 188, 188);
 }
+
+/* ------------ pagination ---------------- */
+
+.pagination-container {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+  padding: 0em 2em;
+}
+
+.total-search-results{
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+  padding: 0em 2em;
+  color: gray;
+}
+
+input[type="number"] {
+  /* border: 2px solid green; */
+  width: 80px;
+  height: 37px;
+  margin-left: 0.5em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ------------ hover area ----------------- */
 
 .sort-button span:hover ~ i {
   color: rgb(56, 97, 251);
@@ -179,19 +214,34 @@ img {
   input[type="search"] {
     margin: 0;
     width: 100px;
+    height: 32px;
+    font-size: 0.9rem;
   }
 
   .coin-container {
     margin: 1em 2em;
+    font-size: 0.8rem;
+  }
+
+  .total-search-results{
+    font-size: 0.9rem;
   }
 
   /* crypto-con */
   nav a span {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   nav a {
     margin-left: 1em;
   }
-  
+
+  .pagination-container{
+    font-size: 0.9rem;
+  }
+
+  input[type=number]{
+    height: 35px;
+  }
+
 }

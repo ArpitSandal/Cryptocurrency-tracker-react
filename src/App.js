@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import "./font-awesome/css/all.css";
+import "./assets/Loader.css";
 import Coins from "./components/Coins";
 import Pagination from "./components/Pagination";
 import Navbar from "./components/Navbar";
@@ -137,7 +138,17 @@ class App extends Component {
       total_coins = cnt; // total search results
     }
 
-    // console.log(this.state.coins_data);
+    // if the data is not received yet
+    if (this.state.coins_data.length === 0) {
+      return (
+        <div
+          className="loader-container"
+          style={{ backgroundColor: "rgb(56, 97, 251)" }}
+        >
+          <div className="pong-loader"></div>
+        </div>
+      );
+    }
 
     return (
       <div>
@@ -160,7 +171,7 @@ class App extends Component {
                   className="sort-button"
                   onClick={() => this.sortAccTo("alpha")}
                 >
-                  <span>Coin</span> <i class="fas fa-sort"></i>
+                  <span>Coin</span> <i className="fas fa-sort"></i>
                 </span>
               </div>
 
@@ -170,7 +181,7 @@ class App extends Component {
                     className="sort-button"
                     onClick={() => this.sortAccTo("price")}
                   >
-                    <span>Price</span> <i class="fas fa-sort"></i>
+                    <span>Price</span> <i className="fas fa-sort"></i>
                   </span>
                 </p>
                 <p>24h Max.</p>
